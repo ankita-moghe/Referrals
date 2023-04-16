@@ -1,0 +1,23 @@
+<h1>Sent Referrals</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Resend Invite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.referrals.each do |referral| %>
+      <tr>
+        <td><%= referral.email %></td>
+        <td><%= referral.status %></td>
+        <td>
+          <% if referral.pending? %>
+            <%= button_to 'Resend Invite', resend_invite_referral_path(referral.id), method: :patch %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

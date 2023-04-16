@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+ENV['RAILS_ENV'] ||= 'development'
+
+system 'bundle exec rails server'

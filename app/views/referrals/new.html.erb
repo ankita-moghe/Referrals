@@ -1,0 +1,11 @@
+<h2>Send Referral</h2>
+
+<%= form_for :referrals, url: referrals_path do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Refer a friend" %>
+  </div>
+<% end %>

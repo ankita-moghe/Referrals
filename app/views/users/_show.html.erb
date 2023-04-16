@@ -1,0 +1,27 @@
+<h1>User Dashboard</h1>
+<% if current_user.admin? %>
+  <%= link_to 'Send Referral', new_referral_url(current_user) %>
+  <%= render 'referrals/index', referrals: current_user.referrals %>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Referred By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= current_user.email %></td>
+        <td><%= current_user.firstname %></td>
+        <td><%= current_user.lastname %></td>
+        <td><%= current_user.referrer.try(:firstname) %></td>
+      </tr>
+  </tbody>
+</table>
+<% end %>
+
+
+<%= button_to "Sign out", destroy_user_session_path, method: :delete %>
